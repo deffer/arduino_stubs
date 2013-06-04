@@ -1,0 +1,19 @@
+##############################################################
+leostickv2.name=Freetronics LeoStick V2.0
+leostickv2.upload.protocol=avr109
+leostickv2.upload.maximum_size=28672
+leostickv2.upload.speed=57600
+leostickv2.upload.disable_flushing=true
+leostickv2.bootloader.low_fuses=0xff
+leostickv2.bootloader.high_fuses=0xd8
+leostickv2.bootloader.extended_fuses=0xcb
+leostickv2.bootloader.path=caterina
+leostickv2.bootloader.file=Caterina-LeoStick.hex
+leostickv2.bootloader.unlock_bits=0x3F
+leostickv2.bootloader.lock_bits=0x2F
+leostickv2.build.mcu=atmega32u4
+leostickv2.build.f_cpu=16000000L
+leostickv2.build.vid=0x26BA
+leostickv2.build.pid=0x0002
+leostickv2.build.core=arduino
+leostickv2.build.variant=leostickv2
