@@ -18,7 +18,7 @@
  
  Circuit:
  LED attached ot pin 6 wiht 1 kOhm resistor between
- Button - pin2 to one leg -> next leg - to 10 kOhm - to ground, next leg to 5V
+ Button - pin2 to one leg -> connected leg - to 10 kOhm - to ground; opposite leg to 5V
  
  Expected behaviour:
  Start with long blinking external led once every 4 seconds
