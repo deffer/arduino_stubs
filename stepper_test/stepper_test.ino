@@ -24,6 +24,8 @@ const int stepsPerRevolution = 200;  // change this to fit the number of steps p
                                      // for your motor
 
 // initialize the stepper library on pins 8 through 11:
+// 8 - IN1, 9 - IN2. other side: 10 - IN3, 11 - IN4
+// wires of each coil are connected to one side of driver
 Stepper myStepper(stepsPerRevolution, 8,9,10,11);            
 
 int stepCount = 0;         // number of steps the motor has taken
