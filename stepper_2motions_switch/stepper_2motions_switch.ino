@@ -1,18 +1,17 @@
 /**
 * 1. Stepper motor bipolar
 * 2. motor driver L293D
-* 3. button momentary - connects power (5V) to the EN1 and EN2 driver legs
-* 4. switch on-off-on to control the motor 
+* 3. switch on-off-on to control the motor 
 *    on (top) - start routine UP (turn clockwise that many times)
 *    off (middle) - stop any ongoing routine
 *    on (bottom) - start routine DOWN
-* 5. reed switch - to detect the door is at the top (magnet is near the switch)
+* 4. reed switch - to detect the door is at the top (magnet is near the switch)
 *    LOW - switch is connected - magnet is near the switch - door at the at the top
 * 
-* When button number 3 is pressed it enabled power to the driver, which is moving stepper
-*   in the direction indicated by switch 4, which in turn moves the sliding door
-*   up or down. If switch is off (HIGH, door moves up), additional check is performed 
-*   - if reed switch reads LOW (connected), the door is at the top and we need 
+* When switch 3 goes up or down (PIN_TOP or PIN_BOTTOP), a routine is started which will move stepper
+*   in a direction indicated by switch, which in turn moves the sliding door
+*   up or down. When door moves UP, additional check is performed 
+*   - if reed switch (4) reads LOW (connected), the door is at the top and we need 
 *   to stop the motor.
 */
 #include <Stepper.h>
@@ -40,7 +39,7 @@ int DEF_DOWN = 2;
 // current and previous states
 int prevState = DEF_OFF;
 
-int currentRoutine = DEF_OFF; // resuing DEF_ constants for routine names
+int currentRoutine = DEF_OFF; // reusing DEF_ constants for routine names
 int routineStep = 0;
 
 void setup() {  
@@ -55,7 +54,10 @@ void setup() {
 }
 
 void loop() {
-  // get the sensor value
+  // read command (from RF receiver or button) and if it has changed:
+  //  compare with current routine:
+  //    if different - do something (stop or start)
+  //    otherwise continue what we were doing (routine) or not doing
   int currentState = readSwitchStatus();
   
   // if state changed
